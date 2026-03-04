@@ -353,8 +353,18 @@
 
   function bindContactForm() {
     var form = document.getElementById("contact-form");
+    if (!form) {
+      return;
+    }
+
+    // If Formspree is configured, let the browser submit normally.
+    var action = (form.getAttribute("action") || "").toLowerCase();
+    if (action.indexOf("formspree.io") !== -1) {
+      return;
+    }
+
     var status = document.getElementById("form-status");
-    if (!form || !status) {
+    if (!status) {
       return;
     }
 
