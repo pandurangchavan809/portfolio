@@ -1,0 +1,4 @@
+﻿# Ignore generated and local environment files
+node_modules/
+.DS_Store
+Thumbs.db

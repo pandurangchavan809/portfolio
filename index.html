@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pandurang Chavan | AI ML Portfolio</title>
+  <meta name="description" content="Portfolio website of Pandurang Chavan, Machine Learning Engineer Intern." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <script>
+    (function () {
+      document.documentElement.classList.add("dark");
+      try {
+        localStorage.setItem("portfolio-theme", "dark");
+      } catch (error) {
+        // Ignore storage restrictions in private or hardened browser modes.
+      }
+    })();
+  </script>
+
+  <script>
+    tailwind = window.tailwind || {};
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"],
+            display: ["Space Grotesk", "sans-serif"],
+            mono: ["IBM Plex Mono", "monospace"]
+          },
+          colors: {
+            accent: {
+              50: "#e8fdff",
+              100: "#c5f9ff",
+              200: "#92f3ff",
+              300: "#55e9ff",
+              400: "#1adaff",
+              500: "#00f3ff",
+              600: "#00d6e0",
+              700: "#00a8b3",
+              800: "#007b82",
+              900: "#0b4f54"
+            }
+          },
+          boxShadow: {
+            soft: "0 18px 50px -28px rgba(7, 16, 28, 0.55)"
+          },
+          keyframes: {
+            floatY: {
+              "0%, 100%": { transform: "translateY(0px)" },
+              "50%": { transform: "translateY(-8px)" }
+            },
+            pulseGlow: {
+              "0%, 100%": { boxShadow: "0 0 0 0 rgba(0,243,255,0.00)" },
+              "50%": { boxShadow: "0 0 0 12px rgba(0,243,255,0.10)" }
+            },
+            drift: {
+              "0%": { transform: "translate3d(-2%, 0, 0)" },
+              "50%": { transform: "translate3d(2%, -1.2%, 0)" },
+              "100%": { transform: "translate3d(-2%, 0, 0)" }
+            }
+          },
+          animation: {
+            floatY: "floatY 6.5s ease-in-out infinite",
+            pulseGlow: "pulseGlow 2.8s ease-in-out infinite",
+            drift: "drift 16s ease-in-out infinite"
+          }
+        }
+      }
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body class="bg-[var(--bg-color)] text-[var(--text-color)] transition-colors duration-500 selection:bg-sky-300/25 dark:selection:bg-cyan-400/25">
+  <div class="aurora-bg pointer-events-none fixed inset-0 -z-10 animate-drift">
+    <div class="aurora-blob aurora-blob-a"></div>
+    <div class="aurora-blob aurora-blob-b"></div>
+    <div class="aurora-blob aurora-blob-c"></div>
+  </div>
+
+  <header id="site-header" class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-300">
+    <nav class="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+      <a href="#hero" class="font-display text-lg font-bold tracking-tight">Pandurang Chavan</a>
+
+      <ul class="hidden items-center gap-7 text-sm font-semibold text-slate-600 dark:text-slate-300 md:flex">
+        <li><a class="top-link" href="#about">About</a></li>
+        <li><a class="top-link" href="#skills">Skills</a></li>
+        <li><a class="top-link" href="#projects">Projects</a></li>
+        <li><a class="top-link" href="#certifications">Certifications</a></li>
+        <li><a class="top-link" href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="flex items-center gap-2">
+        <a href="assets/resume/Resume.pdf" download="Pandurang-Chavan-Resume.pdf" class="btn-resume hidden rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-bold text-slate-700 shadow-sm transition dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 sm:inline-flex">
+          Resume
+        </a>
+
+        <button id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" class="icon-btn inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 transition dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 md:hidden">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobile-menu" class="mx-4 hidden rounded-2xl border border-slate-200 bg-white/95 px-4 py-4 shadow-soft backdrop-blur dark:border-slate-700 dark:bg-slate-900/95 md:hidden">
+      <ul class="space-y-3 text-sm font-semibold text-slate-700 dark:text-slate-200">
+        <li><a class="mobile-link block" href="#about">About</a></li>
+        <li><a class="mobile-link block" href="#skills">Skills</a></li>
+        <li><a class="mobile-link block" href="#projects">Projects</a></li>
+        <li><a class="mobile-link block" href="#certifications">Certifications</a></li>
+        <li><a class="mobile-link block" href="#contact">Contact</a></li>
+        <li>
+          <a href="assets/resume/Resume.pdf" download="Pandurang-Chavan-Resume.pdf" class="inline-flex rounded-lg border border-slate-300 px-3 py-2 text-xs font-bold dark:border-slate-600">
+            Open Resume
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 pb-20 pt-28 sm:px-6 lg:px-8">
+    <section id="hero" class="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+      <div data-reveal>
+        <p class="hero-chip inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.22em]">
+          Machine Learning Engineer Intern
+        </p>
+
+        <h1 class="neon-title mt-4 font-display text-4xl font-extrabold leading-tight text-slate-900 dark:text-white sm:text-5xl">
+          Pandurang Chavan
+        </h1>
+
+        <p class="mt-3 text-base font-medium text-slate-600 dark:text-slate-300">
+          <span id="typing-text" class="typing-accent font-semibold"></span>
+          <span class="typing-cursor">|</span>
+        </p>
+
+        <p class="mt-5 max-w-2xl leading-relaxed text-slate-700 dark:text-slate-300">
+          AI and Data Science undergraduate at Dr. D. Y. Patil Institute of Technology, Pune. I design ML-powered
+          products that combine model accuracy, explainability, and practical deployment.
+        </p>
+
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="#projects" class="btn-primary inline-flex items-center rounded-xl px-5 py-3 text-sm font-bold animate-pulseGlow">
+            View Projects
+          </a>
+          <a href="assets/resume/Resume.pdf" download="Pandurang-Chavan-Resume.pdf" class="btn-outline inline-flex items-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-700 transition dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+            Download Resume
+          </a>
+        </div>
+      </div>
+
+      <div data-reveal>
+        <div class="glass-panel">
+          <h2 class="text-sm font-bold uppercase tracking-[0.2em] text-slate-400">Quick Profile</h2>
+          <div class="mt-5 space-y-4 text-sm">
+            <div class="info-line">
+              <span class="dot"></span>
+              <div>
+                <p class="font-semibold text-white">Location</p>
+                <p class="text-slate-300">Pune, Maharashtra, India</p>
+              </div>
+            </div>
+            <div class="info-line">
+              <span class="dot"></span>
+              <div>
+                <p class="font-semibold text-white">Education</p>
+                <p class="text-slate-300">B.E. AI and DS (CGPA 8.04)</p>
+              </div>
+            </div>
+            <div class="info-line">
+              <span class="dot"></span>
+              <div>
+                <p class="font-semibold text-white">Phone</p>
+                <a class="theme-link text-slate-300 transition" href="tel:+918788844632">+91 8788844632</a>
+              </div>
+            </div>
+            <div class="info-line">
+              <span class="dot"></span>
+              <div>
+                <p class="font-semibold text-white">Email</p>
+                <a class="theme-link break-all text-slate-300 transition" href="mailto:pandurangchavan809@gmail.com">pandurangchavan809@gmail.com</a>
+              </div>
+            </div>
+            <div class="pt-1">
+              <p class="mb-2 text-xs uppercase tracking-[0.18em] text-slate-400">Profiles</p>
+              <div class="flex flex-wrap gap-2">
+                <a href="https://www.linkedin.com/in/pandurang-chavan-7507b1325/" target="_blank" rel="noreferrer" class="link-chip">LinkedIn</a>
+                <a href="https://github.com/pandurangchavan809" target="_blank" rel="noreferrer" class="link-chip">GitHub</a>
+                <a href="https://leetcode.com/u/Pandurang_0188/" target="_blank" rel="noreferrer" class="link-chip">LeetCode</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section-wrap" data-reveal>
+      <div class="section-head">
+        <p class="section-kicker">About</p>
+        <h2 class="section-title">Profile Summary</h2>
+      </div>
+
+      <div class="mt-6 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+        <article class="glass-panel">
+          <p class="leading-relaxed text-slate-700 dark:text-slate-300">
+            Machine Learning and AI Engineering student skilled in Python, ML algorithms, data preprocessing,
+            and full-stack integration. Experienced in building ML-powered dashboards, recommendation systems,
+            and real-time analytics platforms using Scikit-learn, Flask, and Streamlit.
+          </p>
+          <p class="mt-4 leading-relaxed text-slate-700 dark:text-slate-300">
+            Demonstrates strong capability in applied AI and research-driven problem-solving for machine learning
+            engineering challenges.
+          </p>
+        </article>
+
+        <article class="glass-panel profile-photo-panel">
+          <img src="assets/images/profile.jpg" alt="Pandurang Chavan profile" class="profile-photo-square" />
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="section-wrap" data-reveal>
+      <div class="section-head">
+        <p class="section-kicker">Skills</p>
+        <h2 class="section-title">Technical Skills</h2>
+      </div>
+
+      <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <article class="glass-panel">
+          <h3 class="skill-heading">Programming Languages</h3>
+          <div class="pill-wrap">
+            <span class="skill-pill">Python</span><span class="skill-pill">C++</span><span class="skill-pill">SQL</span>
+          </div>
+        </article>
+
+        <article class="glass-panel">
+          <h3 class="skill-heading">Web Technologies</h3>
+          <div class="pill-wrap">
+            <span class="skill-pill">React.js</span><span class="skill-pill">Tailwind CSS</span><span class="skill-pill">HTML</span>
+          </div>
+        </article>
+
+        <article class="glass-panel">
+          <h3 class="skill-heading">Math for ML</h3>
+          <div class="pill-wrap">
+            <span class="skill-pill">Linear Algebra</span><span class="skill-pill">Probability</span><span class="skill-pill">Statistics</span>
+          </div>
+        </article>
+
+        <article class="glass-panel">
+          <h3 class="skill-heading">ML Libraries</h3>
+          <div class="pill-wrap">
+            <span class="skill-pill">NumPy</span><span class="skill-pill">Pandas</span><span class="skill-pill">Matplotlib</span><span class="skill-pill">Scikit-learn</span><span class="skill-pill">PyTorch</span>
+          </div>
+        </article>
+
+        <article class="glass-panel">
+          <h3 class="skill-heading">Backend and Databases</h3>
+          <div class="pill-wrap">
+            <span class="skill-pill">Flask</span><span class="skill-pill">Streamlit</span><span class="skill-pill">MySQL</span><span class="skill-pill">MongoDB</span><span class="skill-pill">SQLite</span>
+          </div>
+        </article>
+
+        <article class="glass-panel">
+          <h3 class="skill-heading">DevOps and Concepts</h3>
+          <div class="pill-wrap">
+            <span class="skill-pill">Git</span><span class="skill-pill">GitHub</span><span class="skill-pill">AWS</span><span class="skill-pill">Docker</span><span class="skill-pill">OOP</span><span class="skill-pill">DSA</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="section-wrap" data-reveal>
+      <div class="section-head">
+        <p class="section-kicker">Projects</p>
+        <h2 class="section-title">Selected Projects</h2>
+      </div>
+
+      <div class="projects-stack mt-6">
+        <article class="stack-card" data-project="project-performance">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">Employee Performance Evaluation Dashboard</h3>
+              <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">HTML, CSS, JavaScript, Flask, MySQL, Scikit-learn</p>
+            </div>
+            <button class="open-modal-btn" type="button">Details</button>
+          </div>
+          <p class="mt-3 text-slate-700 dark:text-slate-300">
+            AI-powered dashboard for employee scoring, radar analytics, and predictive performance trend modeling.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-3 text-sm">
+            <a href="#" target="_blank" rel="noreferrer" class="link-chip">Code</a>
+            <a href="#" target="_blank" rel="noreferrer" class="link-chip">Live Demo</a>
+          </div>
+        </article>
+
+        <article class="stack-card" data-project="project-medrisk">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">MedRisk-heart</h3>
+              <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Python, Scikit-learn, Streamlit, Pandas</p>
+            </div>
+            <button class="open-modal-btn" type="button">Details</button>
+          </div>
+          <p class="mt-3 text-slate-700 dark:text-slate-300">
+            Heart disease risk prediction system with robust preprocessing, ROC-AUC evaluation, and explainable dashboard.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-3 text-sm">
+            <a href="#" target="_blank" rel="noreferrer" class="link-chip">Code</a>
+            <a href="https://medrisk-heart.streamlit.app" target="_blank" rel="noreferrer" class="link-chip">Live Demo</a>
+          </div>
+        </article>
+
+        <article class="stack-card" data-project="project-economic">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">Global AI Economic Intelligence Platform</h3>
+              <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Python, Streamlit, Pandas, Scikit-learn, APIs</p>
+            </div>
+            <button class="open-modal-btn" type="button">Details</button>
+          </div>
+          <p class="mt-3 text-slate-700 dark:text-slate-300">
+            Real-time global economic analytics with prediction modules and secure interactive dashboards.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-3 text-sm">
+            <a href="#" target="_blank" rel="noreferrer" class="link-chip">Code</a>
+            <a href="https://ai-economics-intelligence.streamlit.app" target="_blank" rel="noreferrer" class="link-chip">Live Demo</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="certifications" class="section-wrap" data-reveal>
+      <div class="section-head">
+        <p class="section-kicker">Certifications</p>
+        <h2 class="section-title">Verified Certifications</h2>
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-2">
+        <button class="cert-tab active" data-filter="all" type="button">All</button>
+        <button class="cert-tab" data-filter="deeplearning" type="button">DeepLearning.AI</button>
+        <button class="cert-tab" data-filter="aws" type="button">AWS</button>
+        <button class="cert-tab" data-filter="cisco" type="button">Cisco</button>
+        <button class="cert-tab" data-filter="other" type="button">Other</button>
+      </div>
+
+      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="cert-card" data-category="deeplearning" data-cert="cert-ml-specialization">
+          <h3>Machine Learning Specialization</h3>
+          <p>DeepLearning.AI</p>
+          <span>View Credential</span>
+        </article>
+
+        <article class="cert-card" data-category="aws" data-cert="cert-aws-educate">
+          <h3>AWS Educate ML Foundations</h3>
+          <p>AWS</p>
+          <span>View Credential</span>
+        </article>
+
+        <article class="cert-card" data-category="deeplearning" data-cert="cert-ai-everyone">
+          <h3>AI for Everyone</h3>
+          <p>DeepLearning.AI</p>
+          <span>View Credential</span>
+        </article>
+
+        <article class="cert-card" data-category="cisco" data-cert="cert-cisco-data-science">
+          <h3>Data Science Essentials With Python</h3>
+          <p>Cisco</p>
+          <span>View Credential</span>
+        </article>
+
+        <article class="cert-card" data-category="other" data-cert="cert-ibm-ai-fundamentals">
+          <h3>Artificial Intelligence Fundamentals</h3>
+          <p>IBM</p>
+          <span>View Credential</span>
+        </article>
+
+        <article class="cert-card" data-category="aws" data-cert="cert-udacity-genai-aws">
+          <h3>Introducing Generative AI With AWS (Udacity)</h3>
+          <p>Udacity</p>
+          <span>View Credential</span>
+        </article>
+
+        <article class="cert-card" data-category="cisco" data-cert="cert-cisco-stakeholders">
+          <h3>Engaging Stakeholders for Success</h3>
+          <p>Cisco</p>
+          <span>View Credential</span>
+        </article>
+
+        <article class="cert-card" data-category="other" data-cert="cert-meta-frontend">
+          <h3>Introduction to Frontend Development</h3>
+          <p>Meta</p>
+          <span>View Credential</span>
+        </article>
+
+        <article class="cert-card" data-category="aws" data-cert="cert-aws-ml-foundation">
+          <h3>Machine Learning Foundations</h3>
+          <p>AWS</p>
+          <span>View Credential</span>
+        </article>
+
+        <article class="cert-card" data-category="aws" data-cert="cert-aws-genai">
+          <h3>Introducing Generative AI With AWS</h3>
+          <p>AWS</p>
+          <span>View Credential</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="activities" class="section-wrap" data-reveal>
+      <div class="section-head">
+        <p class="section-kicker">Interests</p>
+        <h2 class="section-title">Technical Interests</h2>
+      </div>
+
+      <div class="mt-6 glass-panel">
+        <p class="text-slate-700 dark:text-slate-300">
+          Machine Learning Engineering, Data Science, AI Research, Applied AI Development, Generative AI.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact" class="section-wrap" data-reveal>
+      <div class="section-head">
+        <p class="section-kicker">Contact</p>
+        <h2 class="section-title">Let us connect</h2>
+      </div>
+
+      <div class="mt-6 grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <article class="glass-panel">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Send a message</h3>
+          <form id="contact-form" class="mt-4 space-y-4" data-endpoint="/api/send-email">
+            <div>
+              <label for="name" class="form-label">Name</label>
+              <input id="name" name="name" type="text" required class="form-input" placeholder="Your name" />
+            </div>
+            <div>
+              <label for="email" class="form-label">Email</label>
+              <input id="email" name="email" type="email" required class="form-input" placeholder="you@example.com" />
+            </div>
+            <div>
+              <label for="subject" class="form-label">Subject</label>
+              <input id="subject" name="subject" type="text" required class="form-input" placeholder="Subject" />
+            </div>
+            <div>
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" name="message" rows="4" required class="form-input resize-none" placeholder="Write your message"></textarea>
+            </div>
+            <button type="submit" class="btn-primary inline-flex rounded-xl px-5 py-2.5 text-sm font-bold">
+              Send Message
+            </button>
+          </form>
+          <p id="form-status" class="mt-3 text-sm text-slate-300" aria-live="polite"></p>
+        </article>
+
+        <article class="glass-panel">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Reach out directly</h3>
+          <p class="mt-3 text-slate-700 dark:text-slate-300">
+            Share your links below if you have not updated them yet.
+          </p>
+
+          <ul class="mt-4 space-y-3 text-sm">
+            <li><a href="mailto:pandurangchavan809@gmail.com" class="direct-link">pandurangchavan809@gmail.com</a></li>
+            <li><a href="tel:+918788844632" class="direct-link">+91 8788844632</a></li>
+          </ul>
+
+          <div class="social-icon-row mt-6">
+            <a href="https://www.linkedin.com/in/pandurang-chavan-7507b1325/" target="_blank" rel="noreferrer" class="social-icon-link" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="https://github.com/pandurangchavan809" target="_blank" rel="noreferrer" class="social-icon-link" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+            <a href="https://leetcode.com/u/Pandurang_0188/" target="_blank" rel="noreferrer" class="social-icon-link" aria-label="LeetCode">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M15.8 4.4L9.3 10.9a1.6 1.6 0 0 0 0 2.2l6.5 6.5"></path>
+                <path d="M7.3 12h9.8"></path>
+                <path d="M14.8 4.4l2.7 2.7"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200/80 py-8 text-center text-sm text-slate-500 dark:border-slate-800 dark:text-slate-400">
+    <p>Built with Tailwind CSS, HTML, and JavaScript.</p>
+    <p class="mt-1">Copyright <span id="year"></span> Pandurang Chavan</p>
+  </footer>
+
+  <div id="modal-overlay" class="modal-overlay hidden" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button id="modal-close" type="button" class="modal-close" aria-label="Close modal">x</button>
+      <div id="modal-body" class="custom-scroll"></div>
+    </div>
+  </div>
+
+  <div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-outline" class="cursor-outline" aria-hidden="true"></div>
+
+  <script id="project-performance-data" type="application/json">
+    {
+      "title": "Employee Performance Evaluation Dashboard",
+      "problem": "Organizations often evaluate performance using fragmented and manual methods, creating inconsistency and low visibility.",
+      "approach": "Built a Flask-based dashboard with ML-assisted scoring, radar chart analytics, and a predictive linear regression module.",
+      "outcome": "Unified employee analytics and reporting workflow in one dashboard with trend-based decision support.",
+      "learned": "Learned to combine rule-based scoring with predictive analytics while keeping the interface simple for managers."
+    }
+  </script>
+
+  <script id="project-medrisk-data" type="application/json">
+    {
+      "title": "MedRisk-heart",
+      "problem": "Heart risk assessment from clinical records needs both model reliability and understandable outputs.",
+      "approach": "Trained supervised models, tuned thresholds, validated with ROC-AUC and confusion matrix, and deployed with Streamlit.",
+      "outcome": "Delivered an interpretable risk dashboard capable of assisting early screening decisions.",
+      "learned": "Improved skills in healthcare-focused model validation and safe threshold optimization."
+    }
+  </script>
+
+  <script id="project-economic-data" type="application/json">
+    {
+      "title": "Global AI Economic Intelligence Platform",
+      "problem": "Economic data across countries is scattered and difficult to compare in one place.",
+      "approach": "Designed a real-time API pipeline and ML modules for GDP, inflation, and economic scoring with secure dashboard access.",
+      "outcome": "Built a country-scale analytics platform with comparative visualizations and predictive insights.",
+      "learned": "Strengthened end-to-end skills in data engineering, modeling, and dashboard architecture."
+    }
+  </script>
+
+  <script id="cert-ml-specialization-data" type="application/json">
+    {
+      "title": "Machine Learning Specialization",
+      "issuer": "DeepLearning.AI",
+      "date": "2025",
+      "image": "",
+      "link": "#"
+    }
+  </script>
+
+  <script id="cert-aws-educate-data" type="application/json">
+    {
+      "title": "AWS Educate Machine Learning Foundations",
+      "issuer": "AWS",
+      "date": "2025",
+      "image": "",
+      "link": "#"
+    }
+  </script>
+
+  <script id="cert-ai-everyone-data" type="application/json">
+    {
+      "title": "AI for Everyone",
+      "issuer": "DeepLearning.AI",
+      "date": "2025",
+      "image": "",
+      "link": "#"
+    }
+  </script>
+
+  <script id="cert-cisco-data-science-data" type="application/json">
+    {
+      "title": "Data Science Essentials With Python",
+      "issuer": "Cisco",
+      "date": "2025",
+      "image": "",
+      "link": "#"
+    }
+  </script>
+
+  <script id="cert-ibm-ai-fundamentals-data" type="application/json">
+    {
+      "title": "Artificial Intelligence Fundamentals",
+      "issuer": "IBM",
+      "date": "2025",
+      "image": "",
+      "link": "#"
+    }
+  </script>
+
+  <script id="cert-udacity-genai-aws-data" type="application/json">
+    {
+      "title": "Introducing Generative AI With AWS (Udacity)",
+      "issuer": "Udacity",
+      "date": "2025",
+      "image": "",
+      "link": "#"
+    }
+  </script>
+
+  <script id="cert-cisco-stakeholders-data" type="application/json">
+    {
+      "title": "Engaging Stakeholders for Success",
+      "issuer": "Cisco",
+      "date": "2025",
+      "image": "",
+      "link": "#"
+    }
+  </script>
+
+  <script id="cert-meta-frontend-data" type="application/json">
+    {
+      "title": "Introduction to Frontend Development",
+      "issuer": "Meta",
+      "date": "2025",
+      "image": "",
+      "link": "#"
+    }
+  </script>
+
+  <script id="cert-aws-ml-foundation-data" type="application/json">
+    {
+      "title": "Machine Learning Foundations",
+      "issuer": "AWS",
+      "date": "2025",
+      "image": "assets/documents/certifications/Machine_learning_foundation_AWS.jpeg",
+      "link": "#"
+    }
+  </script>
+
+  <script id="cert-aws-genai-data" type="application/json">
+    {
+      "title": "Introducing Generative AI With AWS",
+      "issuer": "AWS",
+      "date": "2025",
+      "image": "assets/documents/certifications/Introducing_Generative AI with AWS.jpeg",
+      "link": "#"
+    }
+  </script>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
