@@ -71,7 +71,7 @@ export const projects: Project[] = [
       "Engineered LangGraph agent orchestration with state management, structured function calling, and multi-LLM fallback, automating query planning, source ranking, evidence extraction, and claim verification.",
       "Built AI guardrails for hallucination and prompt injection, with chat history, JWT auth, and on-demand PDF reports.",
     ],
-    live: "https://research-ops-three.vercel.app",
+    live: "https://research-ops-agent.vercel.app/",
     code: `${GITHUB}/ResearchOps`,
   },
   {
