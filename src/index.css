@@ -1,0 +1,314 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #f8f8fe;
+  --surface: rgb(255 255 255 / 0.78);
+  --surface-solid: #ffffff;
+  --ink: #0d0b1a;
+  --muted: #514e66;
+  --line: rgb(30 22 80 / 0.13);
+  --violet: #6d28d9;
+  --sky: #0369a1;
+  --glow: rgb(109 40 217 / 0.16);
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #07070d;
+  --surface: rgb(18 17 30 / 0.72);
+  --surface-solid: #11101c;
+  --ink: #f6f5ff;
+  --muted: #aaa8bf;
+  --line: rgb(205 200 255 / 0.13);
+  --violet: #b79cff;
+  --sky: #5cc8fb;
+  --glow: rgb(139 92 246 / 0.28);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-solid: var(--surface-solid);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-violet: var(--violet);
+  --color-sky: var(--sky);
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk Variable", "Inter Variable", sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  scrollbar-gutter: stable;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+::selection {
+  background: rgb(139 92 246 / 0.32);
+}
+
+:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Drifting colour fields behind the agent-graph canvas */
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  will-change: transform;
+}
+.aurora-a {
+  width: 46vw;
+  height: 46vw;
+  left: -12vw;
+  top: -14vw;
+  background: rgb(124 58 237 / 0.26);
+  animation: drift-a 26s ease-in-out infinite alternate;
+}
+.aurora-b {
+  width: 40vw;
+  height: 40vw;
+  right: -10vw;
+  top: 26vh;
+  background: rgb(14 165 233 / 0.2);
+  animation: drift-b 32s ease-in-out infinite alternate;
+}
+html:not(.dark) .aurora-a {
+  background: rgb(124 58 237 / 0.13);
+}
+html:not(.dark) .aurora-b {
+  background: rgb(14 165 233 / 0.13);
+}
+@keyframes drift-a {
+  to {
+    transform: translate(18vw, 22vh) scale(1.15);
+  }
+}
+@keyframes drift-b {
+  to {
+    transform: translate(-22vw, -16vh) scale(0.9);
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(100deg, var(--violet), var(--sky));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Layered so Tailwind utilities such as lg:hidden can override these */
+@layer components {
+.card {
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  background: var(--surface);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.card-interactive {
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.card-interactive:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--violet) 55%, transparent);
+  box-shadow: 0 18px 50px -24px var(--glow);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.7rem 1.3rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn-primary {
+  color: #fff;
+  background: linear-gradient(100deg, #6d28d9, #0369a1);
+  box-shadow: 0 10px 30px -12px rgb(109 40 217 / 0.7);
+}
+.btn-ghost {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+}
+.btn-ghost:hover {
+  border-color: var(--violet);
+}
+.btn-sm {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.8125rem;
+}
+
+.chip {
+  display: inline-block;
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  color: var(--muted);
+}
+
+.field {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  background: var(--surface-solid);
+  padding: 0.7rem 0.9rem;
+  font-size: 0.9rem;
+  color: var(--ink);
+  transition: border-color 0.2s ease;
+}
+.field::placeholder {
+  color: var(--muted);
+}
+.field:focus {
+  outline: none;
+  border-color: var(--violet);
+}
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Modal */
+dialog.modal {
+  margin: auto;
+  max-width: none;
+  max-height: none;
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  background: var(--surface-solid);
+  color: var(--ink);
+  padding: 0;
+  overflow: hidden;
+  animation: modal-in 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+dialog.modal::backdrop {
+  background: rgb(4 3 12 / 0.72);
+  backdrop-filter: blur(6px);
+  animation: fade-in 0.28s ease;
+}
+html:has(dialog.modal[open]) {
+  overflow: hidden;
+}
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Theme toggle: a glowing sun that eclipses into a moon */
+.theme-toggle {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: #6d28d9;
+  transition: transform 0.25s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+.theme-toggle:hover {
+  transform: rotate(14deg) scale(1.06);
+}
+.dark .theme-toggle {
+  color: #fbbf24;
+  box-shadow: 0 0 22px -3px rgb(251 191 36 / 0.55);
+}
+.theme-toggle svg * {
+  transform-origin: center;
+  transform-box: view-box;
+}
+.theme-toggle .core {
+  transition: r 0.45s ease;
+  r: 8.5px;
+}
+.dark .theme-toggle .core {
+  r: 5px;
+}
+.theme-toggle .bite {
+  transition: cx 0.45s ease, cy 0.45s ease;
+  cx: 16.5px;
+  cy: 7.5px;
+}
+.dark .theme-toggle .bite {
+  cx: 30px;
+  cy: 0;
+}
+.theme-toggle .rays {
+  transition: transform 0.45s ease, opacity 0.3s ease;
+  transform: rotate(-60deg) scale(0.4);
+  opacity: 0;
+}
+.dark .theme-toggle .rays {
+  transform: none;
+  opacity: 1;
+}
+
+/* Resume stays out of printouts while the viewer is open */
+@media print {
+  html:has(dialog.resume-dialog[open]) * {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

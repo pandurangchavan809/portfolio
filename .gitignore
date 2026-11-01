@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.DS_Store
+Thumbs.db
+*.local
+
+# Source resume is reference-only and must never be committed or deployed
+assets/resume/
+*.pdf
